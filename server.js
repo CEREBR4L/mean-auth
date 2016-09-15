@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // [SH] Require Passport
 var passport = require('passport');
+var port = process.env.PORT || 8080;
 
 // [SH] Bring in the data model
 require('./api/models/db');
@@ -82,6 +83,10 @@ app.use(function(err, req, res, next) {
         message: err.message,
         error: {}
     });
+});
+
+app.listen(port, function(){
+    console.log("App running on: " + port);
 });
 
 
